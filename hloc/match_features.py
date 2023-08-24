@@ -21,6 +21,12 @@ line using their name. Each is a dictionary with the following entries:
     - model: the model configuration, as passed to a feature matcher.
 '''
 confs = {
+    'roma': {
+        'output': 'matches-roma',
+        'model': {
+            'name': 'roma',
+        },
+    },
     'superpoint+lightglue': {
         'output': 'matches-superpoint-lightglue',
         'model': {
