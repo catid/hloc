@@ -88,28 +88,6 @@ class Roma(BaseModel):
         kpts1, kpts2 = self.net.to_pixel_coordinates(matches, H_A, W_A, H_B, W_B)
         pred = {}
         pred["keypoints0"], pred["keypoints1"] = kpts1, kpts2
-
-        scores = certainty
-
-        top_k = self.conf['max_num_matches']
-        if top_k is not None and len(scores) > top_k:
-            keep = torch.argsort(scores, descending=True)[:top_k]
-            pred['keypoints0'], pred['keypoints1'] =\
-                pred['keypoints0'][keep], pred['keypoints1'][keep]
-            scores = scores[keep]
-
-        # For consistency with hloc pairs, we refine kpts in image0!
-        rename = {
-            'keypoints0': 'keypoints1',
-            'keypoints1': 'keypoints0',
-            'image0': 'image1',
-            'image1': 'image0',
-            'mask0': 'mask1',
-            'mask1': 'mask0',
-        }
-
-        # Switch back indices
-        pred = {(rename[k] if k in rename else k): v for k, v in pred.items()}
-        pred['scores'] = scores
+        pred['scores'] = certainty
 
         return pred
