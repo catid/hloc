@@ -97,6 +97,6 @@ class DeDoDe(BaseModel):
 
         return {
             "keypoints": keypoints_A,  # 1 x N x 2
+            "keypoint_scores": P_A,  # 1 x N
             "descriptors": description_A.permute(0, 2, 1),  # 1 x 256 x N
-            "scores": P_A,  # 1 x N
         }
