@@ -94,9 +94,9 @@ confs = {
             "grayscale": False,
             "force_resize": True,
             "resize_max": 1024,
-            "width": 320,
-            "height": 240,
-            "dfactor": 8,
+            "width": 560,
+            "height": 560,
+            "dfactor": 14,
         },
         'max_error': 2,  # max error for assigned keypoints (in px)
         'cell_size': 8,  # size of quantization patch (max 1 kp/patch)
