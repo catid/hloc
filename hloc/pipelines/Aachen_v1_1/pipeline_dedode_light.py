@@ -35,7 +35,7 @@ print(f'Configs for feature matchers:\n{pformat(match_features.confs)}')
 # pick one of the configurations for extraction and matching
 retrieval_conf = extract_features.confs['netvlad']
 feature_conf = extract_features.confs['dedode']
-matcher_conf = match_features.confs['lightglue']
+matcher_conf = match_features.confs['dedode+lightglue']
 
 features = extract_features.main(feature_conf, images, outputs)
 
