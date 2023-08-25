@@ -41,6 +41,13 @@ confs = {
             'features': 'disk',
         },
     },
+    'dedode+lightglue': {
+        'output': 'matches-dedode-lightglue',
+        'model': {
+            'name': 'lightglue',
+            'features': 'dedode',
+        },
+    },
     'superglue': {
         'output': 'matches-superglue',
         'model': {
