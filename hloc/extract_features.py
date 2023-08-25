@@ -119,6 +119,21 @@ confs = {
             'resize_max': 1600,
         },
     },
+    "dedode": {
+        "output": "feats-dedode-n5000-r1024",
+        "model": {
+            "name": "dedode",
+            "max_keypoints": 5000,
+        },
+        "preprocessing": {
+            "grayscale": False,
+            "force_resize": True,
+            "resize_max": 1024,
+            "width": 768,
+            "height": 768,
+            "dfactor": 8,
+        },
+    },
     # Global descriptors
     'dir': {
         'output': 'global-feats-dir',
