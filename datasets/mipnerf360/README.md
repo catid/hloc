@@ -112,8 +112,7 @@ conda activate hloc
 
 python map_bicycle.py
 
-# This runs the Pixel-Perfect SfM step for sparse reconstruction, so now we proceed with the rest of the normal pipeline for a dense pointcloud reconstruction:
-
+# Undistort images
 colmap image_undistorter \
    --image_path bicycle/images \
    --input_path outputs/bicycle/sfm \
@@ -124,9 +123,9 @@ colmap image_undistorter \
 
 ## Discussion
 
-The feature points and matching benefit from a fast GPU.  Running two RTX 4090s in one PC is totally doable, especially if one of them is a water-cooled variety.  COLMAP makes good use of multiple GPUs if you have them during the `patch_match_stereo` step, which is the longest step by far.
+The feature points and matching benefit from a fast GPU.  Since we are skipping the `colmap patch_match_stereo` step that is the longest step this is much faster than a normal SfM pipeline for reconstruction.  Also note that none of the steps we do perform will benefit from multiple GPUs.
 
-You don't need a server-class CPU.  Only a few steps are fully parallel on CPU, so a desktop gaming PC with a fast consumer CPU/GPU optimized for single-core performance is ideal for running this software in terms of price/performance trade-offs.
+You also don't need a server-class CPU.  Only a few steps are fully parallel on CPU, so a desktop gaming PC with a fast consumer CPU/GPU optimized for single-core performance is ideal for running this software in terms of price/performance trade-offs.
 
 It caches the results of the feature point/matching steps so you don't need to perform that again, but the 3D reconstruction is run anew if you execute the script again.  So, to incorporate more pictures into the folder, you'll have to delete the outputs to make it run all the steps from the top.
 
